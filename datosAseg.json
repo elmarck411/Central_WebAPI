@@ -1,0 +1,49 @@
+[{'nombreAseg': 'Juan Alberto Mendoza', 'numeroPoliza': '56789GHJ4322'},
+{'nombreAseg': 'Jose Armando Juárez', 'numeroPoliza': '121531GHOK78'}
+
+]
+
+string cadenaJSON = "{'nombreAseg': 'Juan Alberto Mendoza', 'numeroPoliza': '56789GHJ4322'}, { 'nombreAseg': 'Jose Armando Juárez', 'numeroPoliza': '121531GHOK78'}";
+
+        return  Json(cadenaJSON, JsonRequestBehavior.AllowGet);
+		
+            string postData = "{'Nombre': 'Juan Alberto Mendoza', 'Id': '1254'}";
+			
+			/*Ajustadores ajustador = new Ajustadores(54, "Juan Pérez");
+            HttpResponseMessage response = await _cliente.PostAsync("http://localhost:50766/api/Ajustador", ajustador );
+            response.EnsureSuccessStatusCode();
+            string responseBody = await response.Content.ReadAsStringAsync();*/
+
+            //string cadenaJSON = "{'nombreAseg': 'Juan Alberto Mendoza', 'numeroPoliza': '56789GHJ4322'}";
+
+            
+			
+-------------------------------------------------------------------
+  WebRequest request = WebRequest.Create(target);
+
+            request.Method = "POST";
+            request.ContentType = "text/json";
+
+            request.ContentLength = byteArray.Length;
+           
+
+            using (var dataStream = request.GetRequestStream())
+            {
+                dataStream.Write(byteArray, 0, byteArray.Length);
+            }
+
+            using (var response = (HttpWebResponse)request.GetResponse())
+            {
+                //Do what you need to do with the response.
+            }			
+---------------------------------------------------------------------
+			 /*var httpWebRequest = (HttpWebRequest)WebRequest.Create("http://localhost:50766/api/Ajustador");
+              httpWebRequest.ContentType = "text/json";
+              httpWebRequest.Method = "POST";
+              using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+              {
+
+                  streamWriter.Write(cadenaJSON);
+                  streamWriter.Flush();
+              }
+              var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();*/
