@@ -31,7 +31,7 @@ namespace Central_WebAPI.Controllers
             {
                 return BadRequest(ModelState);
             }
-            return CreatedAtRoute("api/Conductor/1", new { Nombre = conductor.Nombre, NumLicencia = conductor.NumLicencia, TipoLicencia = conductor.TipoLicencia } , conductor);
+            return CreatedAtRoute("DefaultApi", new { Nombre = conductor.Nombre, NumLicencia = conductor.NumLicencia, TipoLicencia = conductor.TipoLicencia } , conductor);
         }
     }
 }
