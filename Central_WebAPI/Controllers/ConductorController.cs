@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Description;
 
 namespace Central_WebAPI.Controllers
 {
@@ -23,11 +24,14 @@ namespace Central_WebAPI.Controllers
         }
 
         // POST: api/Conductor
-        public string Post(Conductor conductor)
+        [ResponseType (typeof(Conductor))]
+        public IHttpActionResult Post(Conductor conductor)
         {
-            return "Datos de conductor de post, Nombre: " + conductor.Nombre +
-                "Numero Licencia: " + conductor.NumLicencia + "Tipo de Licencia: " +
-                conductor.TipoLicencia;
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            return CreatedAtRoute("DefaultApi", new { Nombre = conductor.Nombre } , conductor);
         }
     }
 }
